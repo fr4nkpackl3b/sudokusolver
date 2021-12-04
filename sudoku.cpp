@@ -146,7 +146,6 @@ private:
 				return false;
 		}
 
-		//Box check
 		int x = floor(j / 3) * 3;
 		int y = floor(i / 3) * 3;
 
@@ -167,9 +166,7 @@ private:
 		if (m_btSquares.empty())
 			m_btSquares = m_squares;
 
-		// Slow visible solve
-		// Takes a while to solve hard sudoku's
-		// It has to draw the grid every frame
+		// slow visible solve
 
 		if (m_index < 9 * 9) {
 			while (m_squares[m_index].digit != 0 && m_index < 9 * 9 - 1) m_index++;
@@ -184,9 +181,7 @@ private:
 			if (valid(m_btSquares, m_index)) m_index++;
 		}
 
-		// Fast insvisible solve
-		// It solves every sudoku almost instantly
-		// Only draws the grid when it's finished
+		// fast insvisible solve
 
 		/*while (m_index < 9 * 9) {
 			if (m_squares[m_index].digit != 0) {
@@ -232,7 +227,6 @@ private:
 					}
 				}
 
-				// Unique column check
 				for (int k = 0; k < 9; k++) {
 					if (m_squares[j + i * 9].possible[k]) {
 						bool unique = true;
@@ -254,7 +248,6 @@ private:
 					}
 				}
 
-				// Unique box check
 				int x = floor(j / 3) * 3;
 				int y = floor(i / 3) * 3;
 
